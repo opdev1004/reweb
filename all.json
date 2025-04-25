@@ -1,0 +1,380 @@
+{
+    "sauce": {
+        "R": {
+            "sauces": [
+                "Resauce"
+            ],
+            "items": [
+                "Smash Prince",
+                "Smash Queen",
+                "Famous Castle",
+                "Original George",
+                "Slam LC",
+                "Icon",
+                "Tenderbox LC (o)"
+            ]
+        },
+        "RMK": {
+            "sauces": [
+                "Resauce",
+                "Mustard",
+                "Ketchup"
+            ],
+            "items": [
+                "Cheese Burger Fries"
+            ]
+        },
+        "RB": {
+            "sauces": [
+                "Resauce",
+                "BBQ"
+            ],
+            "items": [
+                "Smoky LC"
+            ]
+        },
+        "RH": {
+            "sauces": [
+                "Resauce",
+                "Honey"
+            ],
+            "items": [
+                "Rehab"
+            ]
+        },
+        "A": {
+            "sauces": [
+                "Aioli"
+            ],
+            "items": [
+                "Queen Chick",
+                "Lil Chick",
+                "Supernash",
+                "Hawaii 5.0",
+                "Crunchy LC",
+                "Supreme LC",
+                "The Backbone",
+                "Lucky XL"
+            ]
+        },
+        "AK": {
+            "sauces": [
+                "Aioli",
+                "Ketchup"
+            ],
+            "items": [
+                "Great King",
+                "Legend"
+            ]
+        },
+        "AKM": {
+            "sauces": [
+                "Aioli",
+                "Ketchup",
+                "Mustard"
+            ],
+            "items": [
+                "Cheese Burger",
+                "Classic"
+            ]
+        },
+        "AB": {
+            "sauces": [
+                "Aioli",
+                "BBQ"
+            ],
+            "items": [
+                "Pitmaster",
+                "King Ed",
+                "Royal Big Smoke",
+                "Imp Smokehouse",
+                "BBQ Bacon Fries"
+            ]
+        },
+        "MAB": {
+            "sauces": [
+                "Mustard",
+                "Aioli",
+                "BBQ"
+            ],
+            "items": [
+                "Dirty Duke",
+                "Final Boss"
+            ]
+        },
+        "CMK": {
+            "sauces": [
+                "Chipotle",
+                "Ketchup"
+            ],
+            "items": [
+                "Easy 2.0",
+                "Mean Bean"
+            ]
+        },
+        "CMB": {
+            "sauces": [
+                "Chipotle",
+                "BBQ"
+            ],
+            "items": [
+                "Sticky Bishop",
+                "Holy Smoke",
+                "Legit XL",
+                "Holy Fries"
+            ]
+        },
+        "SM": {
+            "sauces": [
+                "Sriracha"
+            ],
+            "items": [
+                "Regent Red",
+                "Spicy Fries"
+            ]
+        },
+        "MK": {
+            "sauces": [
+                "Mustard",
+                "Ketchup"
+            ],
+            "items": [
+                "Lil Cheese"
+            ]
+        },
+        "AS": {
+            "sauces": [
+                "Aioli",
+                "Sweet Chilli"
+            ],
+            "items": [
+                "Sweet Chilli Fries"
+            ]
+        },
+        "CH": {
+            "sauces": [
+                "Chipotle",
+                "Honey"
+            ],
+            "items": [
+                "Stunner Fries"
+            ]
+        },
+        "AJ": {
+            "sauces": [
+                "Aioli",
+                "Jam"
+            ],
+            "items": [
+                "Jammy Dodger"
+            ]
+        },
+        "No Sauce": {
+            "sauces": [],
+            "items": [
+                "Renegade"
+            ]
+        },
+        "Secret": {
+            "sauces": [],
+            "items": [
+                "Pack, Box (o)"
+            ]
+        }
+    },
+    "veges": {
+        "TLOP": {
+            "veges": [
+                "Full"
+            ],
+            "items": [
+                "Great King",
+                "Dirty Duke"
+            ]
+        },
+        "LOP": {
+            "veges": [
+                "Lettuce",
+                "Onions",
+                "Pickles"
+            ],
+            "items": [
+                "Smash Prince",
+                "Smash Queen"
+            ]
+        },
+        "TLP": {
+            "veges": [
+                "Tomato",
+                "Lettuce",
+                "Pickles"
+            ],
+            "items": [
+                "Famous Castle"
+            ]
+        },
+        "TLO": {
+            "veges": [
+                "Tomato",
+                "Lettuce",
+                "Onions"
+            ],
+            "items": [
+                "Mean Bean"
+            ]
+        },
+        "OP": {
+            "veges": [
+                "Onions",
+                "Pickles"
+            ],
+            "items": [
+                "Cheese Burger",
+                "Classic",
+                "Cheese Burger Fries"
+            ]
+        },
+        "TL": {
+            "veges": [
+                "Tomato",
+                "Lettuce"
+            ],
+            "items": [
+                "Supreme LC",
+                "Queen Chick",
+                "Original George"
+            ]
+        },
+        "LP": {
+            "veges": [
+                "Lettuce",
+                "Pickles"
+            ],
+            "items": [
+                "Supernash",
+                "Rehab"
+            ]
+        },
+        "L": {
+            "veges": [
+                "Lettuce"
+            ],
+            "items": [
+                "Crunch LC",
+                "Regent Red",
+                "Lucky XL",
+                "Lil Chick"
+            ]
+        },
+        "O": {
+            "veges": [
+                "Onions"
+            ],
+            "items": [
+                "Pitmaster"
+            ]
+        },
+        "P": {
+            "veges": [
+                "Pickles"
+            ],
+            "items": [
+                "Slam LC",
+                "Lil Cheese"
+            ]
+        },
+        "BRL": {
+            "veges": [
+                "Beetroot",
+                "Lettuce"
+            ],
+            "items": [
+                "Legend"
+            ]
+        },
+        "LH": {
+            "veges": [
+                "Lettuce",
+                "Hashbrown"
+            ],
+            "items": [
+                "Easy 2.0"
+            ]
+        },
+        "CS": {
+            "veges": [
+                "Crunchy",
+                "Shllots"
+            ],
+            "items": [
+                "Sweet Chilli Fries",
+                "Holy Fries"
+            ]
+        },
+        "OR": {
+            "veges": [
+                "Onion Ring"
+            ],
+            "items": [
+                "Legit XL",
+                "Imp Smokehouse"
+            ]
+        },
+        "GOOR": {
+            "veges": [
+                "G Oniion",
+                "Onion Ring"
+            ],
+            "items": [
+                "Final Boss"
+            ]
+        },
+        "GO/CO": {
+            "veges": [
+                "G Onion",
+                "C Onion"
+            ],
+            "items": [
+                "Icon",
+                "Sticky Bishop",
+                "Holy Smoke"
+            ]
+        },
+        "POR": {
+            "veges": [
+                "Pickles",
+                "Onion Ring"
+            ],
+            "items": [
+                "Royal Big Smoke"
+            ]
+        },
+        "LFP": {
+            "veges": [
+                "Lettuce",
+                "FPineapple"
+            ],
+            "items": [
+                "Hawaii 5.0"
+            ]
+        },
+        "LGP": {
+            "veges": [
+                "Lettuce",
+                "GPineapple"
+            ],
+            "items": [
+                "King Ed"
+            ]
+        },
+        "No Vege": {
+            "veges": [],
+            "items": [
+                "Jammy Dodger",
+                "The Backbone",
+                "Smoky LC",
+                "Renegade"
+            ]
+        }
+    }
+}

@@ -1,0 +1,97 @@
+{
+  "R": {
+    "sauces": ["Resauce"],
+    "items": [
+      "Smash Prince",
+      "Smash Queen",
+      "Famous Castle",
+      "Original George",
+      "Slam LC",
+      "Icon",
+      "Tenderbox LC (o)"
+    ]
+  },
+  "RMK": {
+    "sauces": ["Resauce", "Mustard", "Ketchup"],
+    "items": ["Cheese Burger Fries"]
+  },
+  "RB": {
+    "sauces": ["Resauce", "BBQ"],
+    "items": ["Smoky LC"]
+  },
+  "RH": {
+    "sauces": ["Resauce", "Honey"],
+    "items": ["Rehab"]
+  },
+  "A": {
+    "sauces": ["Aioli"],
+    "items": [
+      "Queen Chick",
+      "Lil Chick",
+      "Supernash",
+      "Hawaii 5.0",
+      "Crunchy LC",
+      "Supreme LC",
+      "The Backbone",
+      "Lucky XL"
+    ]
+  },
+  "AK": {
+    "sauces": ["Aioli", "Ketchup"],
+    "items": ["Great King", "Legend"]
+  },
+  "AKM": {
+    "sauces": ["Aioli", "Ketchup", "Mustard"],
+    "items": ["Cheese Burger", "Classic"]
+  },
+  "AB": {
+    "sauces": ["Aioli", "BBQ"],
+    "items": [
+      "Pitmaster",
+      "King Ed",
+      "Royal Big Smoke",
+      "Imp Smokehouse",
+      "BBQ Bacon Fries"
+    ]
+  },
+  "MAB": {
+    "sauces": ["Mustard", "Aioli", "BBQ"],
+    "items": ["Dirty Duke", "Final Boss"]
+  },
+  "CMK": {
+    "sauces": ["Chipotle", "Ketchup"],
+    "items": ["Easy 2.0", "Mean Bean"]
+  },
+  "CMB": {
+    "sauces": ["Chipotle", "BBQ"],
+    "items": ["Sticky Bishop", "Holy Smoke", "Legit XL", "Holy Fries"]
+  },
+  "SM": {
+    "sauces": ["Sriracha"],
+    "items": ["Regent Red", "Spicy Fries"]
+  },
+  "MK": {
+    "sauces": ["Mustard", "Ketchup"],
+    "items": ["Lil Cheese"]
+  },
+  "AS": {
+    "sauces": ["Aioli", "Sweet Chilli"],
+    "items": ["Sweet Chilli Fries"]
+  },
+  "CH": {
+    "sauces": ["Chipotle", "Honey"],
+    "items": ["Stunner Fries"]
+  },
+  "AJ": {
+    "sauces": ["Aioli", "Jam"],
+    "items": ["Jammy Dodger"]
+  },
+  "No Sauce": {
+    "sauces": [],
+    "items": ["Renegade"]
+  },
+  "Secret": {
+    "sauces": [],
+    "items": ["Pack, Box (o)"]
+  }
+}

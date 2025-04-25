@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Sauce & Vege Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 4px;
             background: #f4f4f4;
+            margin: 0;
         }
 
         #quiz-container {
@@ -18,13 +20,18 @@
             max-width: 600px;
             margin: auto;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
         }
 
         h2 {
             margin-bottom: 1em;
+            font-size: 1.2em;
         }
 
         .option {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
             margin: 0.5em 0;
         }
 
@@ -33,10 +40,23 @@
             padding: 0.5em 1em;
             font-size: 1em;
             margin-top: 1em;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         #mode-selector {
             margin-bottom: 1em;
+        }
+
+        @media (min-width: 600px) {
+            button.option {
+                width: auto;
+            }
+
+            button,
+            select {
+                width: auto;
+            }
         }
     </style>
 </head>
