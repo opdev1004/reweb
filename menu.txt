@@ -1,0 +1,409 @@
+Cheese Burger -
+Beef, Cheese, 
+Pickles, Onion, Mustard, 
+Ketchup, Aioli
+
+
+
+Smash Prince -
+Beef, Cheese, 
+Pickles, Lettuce, Onion, 
+REsauce
+
+
+
+
+
+
+Great King -
+Beef, Cheese, 
+Pickles, Lettuce, Tomato, 
+Onion, Ketchup, Aioli
+
+
+
+
+Famous Castle -
+Beef, Cheese, 
+Pickles, Lettuce, Tomato, 
+Caramelised Onions, 
+REsauce
+
+
+
+
+
+Sticky Bishop -
+Beef, Cheese, 
+Double Streaky Bacon, 
+Caramelised Onions, 
+Chipotle Mayo,
+BBQ sauce
+
+
+
+
+
+Dirty Duke -
+Beef, Cheese, 
+Streaky Bacon, Pickles, 
+Lettuce, Tomato, Onion, 
+Mustard, Aioli,
+BBQ sauce
+
+
+
+
+Royal Big Smoke -
+Beef, Cheese, 
+Streaky Bacon, Pickles, 
+Crunchy Onion Rings, 
+Aioli, BBQ sauce
+
+
+
+Legend -
+Beef, Cheese, 
+Streaky Bacon, Fried 
+Egg, Lettuce, 
+Caramelised Onions, 
+Beetroot, Ketchup, Aioli
+
+
+
+
+
+Icon -
+Triple Beef, Triple 
+Cheese, Grilled Onions, 
+REsauce
+
+
+
+
+
+
+Classic -
+Triple Beef, Triple 
+Cheese, Fresh Onions, 
+Pickles, Aioli, Ketchup, 
+Mustard
+
+
+
+
+
+Pitmaster -
+Triple Beef, Triple 
+Cheese, Streaky Bacon, 
+Fresh Onions, Aioli,
+BBQ sauce
+
+
+
+
+
+Renegade -
+Triple Beef, Triple 
+Cheese, Streaky Bacon, 
+Grilled Onions, Fried Egg
+
+
+
+
+
+
+
+
+Queen Chick -
+SF.Chicken, Lettuce, 
+Tomato, Aioli
+
+
+
+
+Smash Queen - 
+SF.Chicken, Cheese, 
+Pickles, Lettuce, Onion, 
+REsauce
+
+
+
+Regent Red - 
+Honey-Sriracha Glazed 
+SF.Chicken, Cheese, 
+Lettuce, Sriracha Mayo
+
+
+
+SuperNash -
+SuperNash SF.Chicken, 
+Pickles, Lettuce, Aiol
+
+
+
+
+
+Holy Smoke -
+SF.Chicken, Cheese, 
+Double Streaky Bacon, 
+Caramelised Onions, 
+Chipotle Mayo,
+BBQ sauce
+
+
+
+Original George -
+SF.Chicken, Cheese, 
+Streaky Bacon, Lettuce, 
+Tomato, REsauce  
+
+
+
+King Ed -
+SF.Chicken, Cheese, 
+Streaky Bacon, Grilled 
+Pineapple, Lettuce, 
+Aioli, BBQ sauce
+
+
+
+Easy 2.0 -
+SF.Chicken, Cheese, 
+Streaky Bacon, 
+Hashbrown, Lettuce, 
+Chipotle Mayo, Ketchup
+
+
+
+Jammy Dodger -
+Famous Tenders,
+Melting Brie,
+Double Streaky Bacon,
+Strawberry-Chipotle Jam, Aioli
+
+
+
+Final Boss -
+Triple Beef, Cheese, and Bacon
+Grilled Onion,
+Aioli, Mustard, BBQ
+Triple Onion Rings
+
+
+
+The Backbone -
+Doube Beef, Cheese, and Bacon
+Aioli, Ketchup,
+Toasted Milk Bun
+
+
+
+Slam LC -
+Louisiana Chicken,
+Cheese, Pickles,
+REsauce
+
+
+
+
+Smoky LC -
+Louisiana Chicken,
+Cheese, Streaky Bacon,
+REsauce, BBQ sauce
+
+
+
+
+Crunch LC -
+Louisiana Chicken,
+Cheese, Lettuce,
+Aioli
+
+
+
+Supreme LC -
+Louisiana Chicken,
+Cheese, Bacon,
+Lettuce, Tomato,
+Aioli
+
+
+Tenderbox LC -
+3 Louisiana Chicken,
+Fries,
+REsauce,
+Texas Toast
+
+
+
+Mean Bean -
+Black Bean & Smoked Paprika Pattie,
+Lettuce, Tomato, Onion,
+Chipotle Mayo, Ketchup, Toasted Milk Bun
+
+
+
+Rehab -
+Southern Fried Halloumi,
+Lettuce, Sweet Pickles, Honey, 
+REsauce, Toasted Milk Bun
+ 
+
+
+
+Impossible Smokehouse -
+Impossible Beef, 
+Cheese, Crunchy Onion Rings, Aioli,
+BBQ sauce, Toasted Milk Bun
+
+
+Lil Cheese -
+Beef, Cheese, 
+Pickles, Mustard, Ketchup, 
+Lil’ Bun
+
+
+
+
+Lil Chick -
+SF.Chicken, Cheese, Lettuce, 
+Aioli, Lil’ Bun
+
+
+
+
+BBQ Bacon Fries -
+Regular Fries, Smoked Bacon,
+Aioli, BBQ sauce
+
+
+
+
+Sweet Chilli Fries -
+Regular Fries, SF.Chicken, 
+Aioli, Sweet Chili, Crispy Shallots
+
+
+
+
+Spicy Fries -
+Regular Fries, 
+Honey-Sriracha Glazed SF.Chicken,
+Fried Jalapeños, 
+Sriracha Mayo
+
+
+
+Cheese Burger Fries -
+Regular Fries, Beef, 
+Cheese, Pickles, Onion, 
+Mustard, Ketchup, REsauce
+
+
+
+Holy Fries -
+Regular Fries, SF.Chicken, 
+Smoked Bacon, Crispy Shallots,
+Chipotle Mayo, BBQ sauce
+
+
+
+Stunner Fries -
+Regular Fries, SF.Chicken, 
+Smoked Bacon,
+Honey, 
+Chipotle Mayo
+
+
+
+Lucky XL -
+Beef, Cheese, Bacon,
+Honey-Sriracha Glazed SF.Chicken,
+Lettuce, Aioli
+
+
+Legit XL -
+Beef, Cheese, Bacon,
+SF.Chicken, Onion Ring,
+Chipotle, BBQ
+
+
+
+Texas Toast -
+3 Texas Toasts
+
+Nuggs -
+6 Nuggets
+
+
+
+
+
+Original Pack -
+Queen Chick,
+Fries, 2 chicken,
+Secret Sauce,
+420ml Drink
+
+
+
+SuperNash Pack -
+SuperNash
+Fries, 2 SuperNash Chicken,
+Secret Sauce,
+420ml Drink
+
+
+
+
+
+
+Fiery Faves -
+SuperNash Burger,
+2 Honey-Sriracha tenders,
+Fries,
+Spicy/Sriracha(?) Mayo,
+Sundae
+
+
+
+Feast Pack -
+2 Smash Prince,
+2 Lil Cheese,
+Large fries,
+Chipotle, Aioli
+
+
+
+Holy Trinity -
+Holy Smoke,
+Sticky Bishop,
+Holy Loaded Fries,
+2 420ml coke or water
+
+
+
+Squad Goals -
+2 Famous Castle,
+2 Queen Chick,
+2 SuperNash,
+Large Fries,
+Ketchup, Aioli,
+4 420ml coke or water
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
