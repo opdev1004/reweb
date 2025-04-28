@@ -1,6 +1,8 @@
 {
   "R": {
-    "sauces": ["Resauce"],
+    "sauces": [
+      "Resauce"
+    ],
     "items": [
       "Smash Prince",
       "Smash Queen",
@@ -12,19 +14,37 @@
     ]
   },
   "RMK": {
-    "sauces": ["Resauce", "Mustard", "Ketchup"],
-    "items": ["Cheese Burger Fries"]
+    "sauces": [
+      "Resauce",
+      "Mustard",
+      "Ketchup"
+    ],
+    "items": [
+      "Cheese Burger Fries"
+    ]
   },
   "RB": {
-    "sauces": ["Resauce", "BBQ"],
-    "items": ["Smoky LC"]
+    "sauces": [
+      "Resauce",
+      "BBQ"
+    ],
+    "items": [
+      "Smoky LC"
+    ]
   },
   "RH": {
-    "sauces": ["Resauce", "Honey"],
-    "items": ["Rehab"]
+    "sauces": [
+      "Resauce",
+      "Honey"
+    ],
+    "items": [
+      "Rehab"
+    ]
   },
   "A": {
-    "sauces": ["Aioli"],
+    "sauces": [
+      "Aioli"
+    ],
     "items": [
       "Queen Chick",
       "Lil Chick",
@@ -32,20 +52,36 @@
       "Hawaii 5.0",
       "Crunchy LC",
       "Supreme LC",
-      "The Backbone",
       "Lucky XL"
     ]
   },
   "AK": {
-    "sauces": ["Aioli", "Ketchup"],
-    "items": ["Great King", "Legend"]
+    "sauces": [
+      "Aioli",
+      "Ketchup"
+    ],
+    "items": [
+      "Great King",
+      "Legend",
+      "The Backbone"
+    ]
   },
   "AKM": {
-    "sauces": ["Aioli", "Ketchup", "Mustard"],
-    "items": ["Cheese Burger", "Classic"]
+    "sauces": [
+      "Aioli",
+      "Ketchup",
+      "Mustard"
+    ],
+    "items": [
+      "Cheese Burger",
+      "Classic"
+    ]
   },
   "AB": {
-    "sauces": ["Aioli", "BBQ"],
+    "sauces": [
+      "Aioli",
+      "BBQ"
+    ],
     "items": [
       "Pitmaster",
       "King Ed",
@@ -55,43 +91,101 @@
     ]
   },
   "MAB": {
-    "sauces": ["Mustard", "Aioli", "BBQ"],
-    "items": ["Dirty Duke", "Final Boss"]
+    "sauces": [
+      "Mustard",
+      "Aioli",
+      "BBQ"
+    ],
+    "items": [
+      "Dirty Duke",
+      "Final Boss"
+    ]
   },
   "CMK": {
-    "sauces": ["Chipotle", "Ketchup"],
-    "items": ["Easy 2.0", "Mean Bean"]
+    "sauces": [
+      "Chipotle",
+      "Ketchup"
+    ],
+    "items": [
+      "Easy 2.0",
+      "Mean Bean"
+    ]
   },
   "CMB": {
-    "sauces": ["Chipotle", "BBQ"],
-    "items": ["Sticky Bishop", "Holy Smoke", "Legit XL", "Holy Fries"]
+    "sauces": [
+      "Chipotle",
+      "BBQ"
+    ],
+    "items": [
+      "Sticky Bishop",
+      "Holy Smoke",
+      "Legit XL",
+      "Holy Fries"
+    ]
   },
   "SM": {
-    "sauces": ["Sriracha"],
-    "items": ["Regent Red", "Spicy Fries"]
+    "sauces": [
+      "Sriracha Mayo"
+    ],
+    "items": [
+      "Spicy Fries"
+    ]
+  },
+  "SMSH": {
+    "sauces": [
+      "Sriracha Mayo",
+      "Sriracha Honey"
+    ],
+    "items": [
+      "Regent Red"
+    ]
   },
   "MK": {
-    "sauces": ["Mustard", "Ketchup"],
-    "items": ["Lil Cheese"]
+    "sauces": [
+      "Mustard",
+      "Ketchup"
+    ],
+    "items": [
+      "Lil Cheese"
+    ]
   },
   "AS": {
-    "sauces": ["Aioli", "Sweet Chilli"],
-    "items": ["Sweet Chilli Fries"]
+    "sauces": [
+      "Aioli",
+      "Sweet Chilli"
+    ],
+    "items": [
+      "Sweet Chilli Fries"
+    ]
   },
   "CH": {
-    "sauces": ["Chipotle", "Honey"],
-    "items": ["Stunner Fries"]
+    "sauces": [
+      "Chipotle",
+      "Honey"
+    ],
+    "items": [
+      "Stunner Fries"
+    ]
   },
   "AJ": {
-    "sauces": ["Aioli", "Jam"],
-    "items": ["Jammy Dodger"]
+    "sauces": [
+      "Aioli",
+      "Jam"
+    ],
+    "items": [
+      "Jammy Dodger"
+    ]
   },
   "No Sauce": {
     "sauces": [],
-    "items": ["Renegade"]
+    "items": [
+      "Renegade"
+    ]
   },
   "Secret": {
     "sauces": [],
-    "items": ["Pack, Box (o)"]
+    "items": [
+      "Pack, Box (o)"
+    ]
   }
 }
