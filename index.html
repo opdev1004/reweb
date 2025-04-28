@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sauce & Vege Quiz</title>
+    <title>Menu Ingredients Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -33,6 +33,7 @@
             width: 100%;
             box-sizing: border-box;
             margin: 0.5em 0;
+            cursor: pointer;
         }
 
         button,
@@ -46,6 +47,16 @@
 
         #mode-selector {
             margin-bottom: 1em;
+        }
+
+        #feedback {
+            margin-top: 1em;
+            font-weight: bold;
+        }
+
+        .selected {
+            border: 2px solid blue;
+            background-color: #eef;
         }
 
         @media (min-width: 600px) {
@@ -62,476 +73,623 @@
 </head>
 
 <body>
+
     <div id="quiz-container">
-        <a href="/reweb/">Home</a> <a href="/reweb/menu">Menu</a>
-        <label for="mode">Choose mode:</label>
-        <select id="mode-selector" onchange="changeMode()">
-            <option value="sauce">Sauce</option>
-            <option value="veges">Veges</option>
-        </select>
+        <a href="/reweb/">Home</a> <a href="/reweb/mode">Mode</a>
         <h2 id="question">Loading...</h2>
         <div id="options"></div>
-        <div id="result"></div>
-        <button onclick="nextQuestion()">Next</button>
+        <div id="feedback"></div>
+        <button id="next-btn" style="display:none;">Next</button>
     </div>
 
     <script>
-        const data = JSON.parse(`
+        // JSON string
+        const jsonData = `
 {
-    "sauce": {
-        "R": {
-            "sauces": [
-                "Resauce"
-            ],
-            "items": [
-                "Smash Prince",
-                "Smash Queen",
-                "Famous Castle",
-                "Original George",
-                "Slam LC",
-                "Icon",
-                "Tenderbox LC (o)"
-            ]
-        },
-        "RMK": {
-            "sauces": [
-                "Resauce",
+    "menu": [
+        {
+            "name": "Cheese Burger",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Pickles",
+                "Onion",
                 "Mustard",
-                "Ketchup"
-            ],
-            "items": [
-                "Cheese Burger Fries"
-            ]
-        },
-        "RB": {
-            "sauces": [
-                "Resauce",
-                "BBQ"
-            ],
-            "items": [
-                "Smoky LC"
-            ]
-        },
-        "RH": {
-            "sauces": [
-                "Resauce",
-                "Honey"
-            ],
-            "items": [
-                "Rehab"
-            ]
-        },
-        "A": {
-            "sauces": [
+                "Ketchup",
                 "Aioli"
-            ],
-            "items": [
-                "Queen Chick",
-                "Lil Chick",
-                "Supernash",
-                "Hawaii 5.0",
-                "Crunchy LC",
-                "Supreme LC",
-                "The Backbone",
-                "Lucky XL"
             ]
         },
-        "AK": {
-            "sauces": [
+        {
+            "name": "Smash Prince",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Pickles",
+                "Lettuce",
+                "Onion",
+                "REsauce"
+            ]
+        },
+        {
+            "name": "Great King",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Pickles",
+                "Lettuce",
+                "Tomato",
+                "Onion",
+                "Ketchup",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Famous Castle",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Pickles",
+                "Lettuce",
+                "Tomato",
+                "Caramelised Onions",
+                "REsauce"
+            ]
+        },
+        {
+            "name": "Sticky Bishop",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Double Streaky Bacon",
+                "Caramelised Onions",
+                "Chipotle Mayo",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Dirty Duke",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Streaky Bacon",
+                "Pickles",
+                "Lettuce",
+                "Tomato",
+                "Onion",
+                "Mustard",
                 "Aioli",
-                "Ketchup"
-            ],
-            "items": [
-                "Great King",
-                "Legend"
+                "BBQ sauce"
             ]
         },
-        "AKM": {
-            "sauces": [
+        {
+            "name": "Royal Big Smoke",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Streaky Bacon",
+                "Pickles",
+                "Crunchy Onion Rings",
+                "Aioli",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Legend",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Streaky Bacon",
+                "Caramelised Onions",
+                "Fried Egg",
+                "Lettuce",
+                "Beetroot",
+                "Ketchup",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Icon",
+            "ingredients": [
+                "Triple Beef",
+                "Triple Cheese",
+                "Grilled Onions",
+                "REsauce"
+            ]
+        },
+        {
+            "name": "Classic",
+            "ingredients": [
+                "Triple Beef",
+                "Triple Cheese",
+                "Fresh Onions",
+                "Pickles",
                 "Aioli",
                 "Ketchup",
                 "Mustard"
-            ],
-            "items": [
-                "Cheese Burger",
-                "Classic"
             ]
         },
-        "AB": {
-            "sauces": [
-                "Aioli",
-                "BBQ"
-            ],
-            "items": [
-                "Pitmaster",
-                "King Ed",
-                "Royal Big Smoke",
-                "Imp Smokehouse",
-                "BBQ Bacon Fries"
-            ]
-        },
-        "MAB": {
-            "sauces": [
-                "Mustard",
-                "Aioli",
-                "BBQ"
-            ],
-            "items": [
-                "Dirty Duke",
-                "Final Boss"
-            ]
-        },
-        "CMK": {
-            "sauces": [
-                "Chipotle",
-                "Ketchup"
-            ],
-            "items": [
-                "Easy 2.0",
-                "Mean Bean"
-            ]
-        },
-        "CMB": {
-            "sauces": [
-                "Chipotle",
-                "BBQ"
-            ],
-            "items": [
-                "Sticky Bishop",
-                "Holy Smoke",
-                "Legit XL",
-                "Holy Fries"
-            ]
-        },
-        "SM": {
-            "sauces": [
-                "Sriracha"
-            ],
-            "items": [
-                "Regent Red",
-                "Spicy Fries"
-            ]
-        },
-        "MK": {
-            "sauces": [
-                "Mustard",
-                "Ketchup"
-            ],
-            "items": [
-                "Lil Cheese"
-            ]
-        },
-        "AS": {
-            "sauces": [
-                "Aioli",
-                "Sweet Chilli"
-            ],
-            "items": [
-                "Sweet Chilli Fries"
-            ]
-        },
-        "CH": {
-            "sauces": [
-                "Chipotle",
-                "Honey"
-            ],
-            "items": [
-                "Stunner Fries"
-            ]
-        },
-        "AJ": {
-            "sauces": [
-                "Aioli",
-                "Jam"
-            ],
-            "items": [
-                "Jammy Dodger"
-            ]
-        },
-        "No Sauce": {
-            "sauces": [],
-            "items": [
-                "Renegade"
-            ]
-        },
-        "Secret": {
-            "sauces": [],
-            "items": [
-                "Pack, Box (o)"
-            ]
-        }
-    },
-    "veges": {
-        "TLOP": {
-            "veges": [
-                "Full"
-            ],
-            "items": [
-                "Great King",
-                "Dirty Duke"
-            ]
-        },
-        "LOP": {
-            "veges": [
-                "Lettuce",
-                "Onions",
-                "Pickles"
-            ],
-            "items": [
-                "Smash Prince",
-                "Smash Queen"
-            ]
-        },
-        "TLP": {
-            "veges": [
-                "Tomato",
-                "Lettuce",
-                "Pickles"
-            ],
-            "items": [
-                "Famous Castle"
-            ]
-        },
-        "TLO": {
-            "veges": [
-                "Tomato",
-                "Lettuce",
-                "Onions"
-            ],
-            "items": [
-                "Mean Bean"
-            ]
-        },
-        "OP": {
-            "veges": [
-                "Onions",
-                "Pickles"
-            ],
-            "items": [
-                "Cheese Burger",
-                "Classic",
-                "Cheese Burger Fries"
-            ]
-        },
-        "TL": {
-            "veges": [
-                "Tomato",
-                "Lettuce"
-            ],
-            "items": [
-                "Supreme LC",
-                "Queen Chick",
-                "Original George"
-            ]
-        },
-        "LP": {
-            "veges": [
-                "Lettuce",
-                "Pickles"
-            ],
-            "items": [
-                "Supernash",
-                "Rehab"
-            ]
-        },
-        "L": {
-            "veges": [
-                "Lettuce"
-            ],
-            "items": [
-                "Crunch LC",
-                "Regent Red",
-                "Lucky XL",
-                "Lil Chick"
-            ]
-        },
-        "O": {
-            "veges": [
-                "Onions"
-            ],
-            "items": [
-                "Pitmaster"
-            ]
-        },
-        "P": {
-            "veges": [
-                "Pickles"
-            ],
-            "items": [
-                "Slam LC",
-                "Lil Cheese"
-            ]
-        },
-        "BRL": {
-            "veges": [
-                "Beetroot",
-                "Lettuce"
-            ],
-            "items": [
-                "Legend"
-            ]
-        },
-        "LH": {
-            "veges": [
-                "Lettuce",
-                "Hashbrown"
-            ],
-            "items": [
-                "Easy 2.0"
-            ]
-        },
-        "CS": {
-            "veges": [
-                "Crunchy",
-                "Shllots"
-            ],
-            "items": [
-                "Sweet Chilli Fries",
-                "Holy Fries"
-            ]
-        },
-        "OR": {
-            "veges": [
-                "Onion Ring"
-            ],
-            "items": [
-                "Legit XL",
-                "Imp Smokehouse"
-            ]
-        },
-        "GOOR": {
-            "veges": [
-                "G Oniion",
-                "Onion Ring"
-            ],
-            "items": [
-                "Final Boss"
-            ]
-        },
-        "GO/CO": {
-            "veges": [
-                "G Onion",
-                "C Onion"
-            ],
-            "items": [
-                "Icon",
-                "Sticky Bishop",
-                "Holy Smoke"
-            ]
-        },
-        "POR": {
-            "veges": [
-                "Pickles",
-                "Onion Ring"
-            ],
-            "items": [
-                "Royal Big Smoke"
-            ]
-        },
-        "LFP": {
-            "veges": [
-                "Lettuce",
-                "FPineapple"
-            ],
-            "items": [
-                "Hawaii 5.0"
-            ]
-        },
-        "LGP": {
-            "veges": [
-                "Lettuce",
-                "GPineapple"
-            ],
-            "items": [
-                "King Ed"
-            ]
-        },
-        "No Vege": {
-            "veges": [],
-            "items": [
-                "Jammy Dodger",
-                "The Backbone",
-                "Smoky LC",
-                "Renegade"
-            ]
-        }
-    }
-}
-        `);
-
-        let mode = 'sauce';
-        let currentQuestion = null;
-        let allItems = [];
-
-        function buildPool ()
         {
-            allItems = [];
-            const pool = data[mode];
-            for (const key in pool)
-            {
-                pool[key].items.forEach(item =>
-                {
-                    allItems.push({ item, key });
-                });
-            }
+            "name": "Pitmaster",
+            "ingredients": [
+                "Triple Beef",
+                "Triple Cheese",
+                "Streaky Bacon",
+                "Fresh Onions",
+                "Aioli",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Renegade",
+            "ingredients": [
+                "Triple Beef",
+                "Triple Cheese",
+                "Streaky Bacon",
+                "Grilled Onions",
+                "Fried Egg"
+            ]
+        },
+        {
+            "name": "Queen Chick",
+            "ingredients": [
+                "SF.Chicken",
+                "Lettuce",
+                "Tomato",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Smash Queen",
+            "ingredients": [
+                "SF.Chicken",
+                "Cheese",
+                "Pickles",
+                "Lettuce",
+                "Onion",
+                "REsauce"
+            ]
+        },
+        {
+            "name": "Regent Red",
+            "ingredients": [
+                "Honey-Sriracha Glazed SF.Chicken",
+                "Cheese",
+                "Lettuce",
+                "Sriracha Mayo"
+            ]
+        },
+        {
+            "name": "SuperNash",
+            "ingredients": [
+                "SuperNash SF.Chicken",
+                "Pickles",
+                "Lettuce",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Holy Smoke",
+            "ingredients": [
+                "SF.Chicken",
+                "Cheese",
+                "Double Streaky Bacon",
+                "Caramelised Onions",
+                "Chipotle Mayo",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Original George",
+            "ingredients": [
+                "SF.Chicken",
+                "Cheese",
+                "Streaky Bacon",
+                "Lettuce",
+                "Tomato",
+                "REsauce"
+            ]
+        },
+        {
+            "name": "King Ed",
+            "ingredients": [
+                "SF.Chicken",
+                "Cheese",
+                "Streaky Bacon",
+                "Grilled Pineapple",
+                "Lettuce",
+                "Aioli",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Easy 2.0",
+            "ingredients": [
+                "SF.Chicken",
+                "Cheese",
+                "Streaky Bacon",
+                "Hashbrown",
+                "Lettuce",
+                "Chipotle Mayo",
+                "Ketchup"
+            ]
+        },
+        {
+            "name": "Jammy Dodger",
+            "ingredients": [
+                "Famous Tenders",
+                "Melting Brie",
+                "Double Streaky Bacon",
+                "Strawberry-Chipotle Jam",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Final Boss",
+            "ingredients": [
+                "Triple Beef",
+                "Cheese",
+                "Bacon",
+                "Grilled Onion",
+                "Aioli",
+                "Mustard",
+                "BBQ sauce",
+                "Triple Onion Rings"
+            ]
+        },
+        {
+            "name": "The Backbone",
+            "ingredients": [
+                "Double Beef",
+                "Cheese",
+                "Bacon",
+                "Aioli",
+                "Ketchup",
+                "Toasted Milk Bun"
+            ]
+        },
+        {
+            "name": "Slam LC",
+            "ingredients": [
+                "Louisiana Chicken",
+                "Cheese",
+                "Pickles",
+                "REsauce"
+            ]
+        },
+        {
+            "name": "Smoky LC",
+            "ingredients": [
+                "Louisiana Chicken",
+                "Cheese",
+                "Streaky Bacon",
+                "REsauce",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Crunch LC",
+            "ingredients": [
+                "Louisiana Chicken",
+                "Cheese",
+                "Lettuce",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Supreme LC",
+            "ingredients": [
+                "Louisiana Chicken",
+                "Cheese",
+                "Bacon",
+                "Lettuce",
+                "Tomato",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Tenderbox LC",
+            "ingredients": [
+                "3 Louisiana Chicken",
+                "Fries",
+                "REsauce",
+                "Texas Toast"
+            ]
+        },
+        {
+            "name": "Mean Bean",
+            "ingredients": [
+                "Black Bean & Smoked Paprika Pattie",
+                "Lettuce",
+                "Tomato",
+                "Onion",
+                "Chipotle Mayo",
+                "Ketchup",
+                "Toasted Milk Bun"
+            ]
+        },
+        {
+            "name": "Rehab",
+            "ingredients": [
+                "Southern Fried Halloumi",
+                "Lettuce",
+                "Sweet Pickles",
+                "Honey",
+                "REsauce",
+                "Toasted Milk Bun"
+            ]
+        },
+        {
+            "name": "Impossible Smokehouse",
+            "ingredients": [
+                "Impossible Beef",
+                "Cheese",
+                "Crunchy Onion Rings",
+                "Aioli",
+                "BBQ sauce",
+                "Toasted Milk Bun"
+            ]
+        },
+        {
+            "name": "Lil Cheese",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Pickles",
+                "Mustard",
+                "Ketchup",
+                "Lil’ Bun"
+            ]
+        },
+        {
+            "name": "Lil Chick",
+            "ingredients": [
+                "SF.Chicken",
+                "Cheese",
+                "Lettuce",
+                "Aioli",
+                "Lil’ Bun"
+            ]
+        },
+        {
+            "name": "BBQ Bacon Fries",
+            "ingredients": [
+                "Regular Fries",
+                "Smoked Bacon",
+                "Aioli",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Sweet Chilli Fries",
+            "ingredients": [
+                "Regular Fries",
+                "SF.Chicken",
+                "Aioli",
+                "Sweet Chili",
+                "Crispy Shallots"
+            ]
+        },
+        {
+            "name": "Spicy Fries",
+            "ingredients": [
+                "Regular Fries",
+                "Honey-Sriracha Glazed SF.Chicken",
+                "Fried Jalapeños",
+                "Spicy/Sriracha Mayo"
+            ]
+        },
+        {
+            "name": "Cheese Burger Fries",
+            "ingredients": [
+                "Regular Fries",
+                "Beef",
+                "Cheese",
+                "Pickles",
+                "Onion",
+                "Mustard",
+                "Ketchup",
+                "REsauce"
+            ]
+        },
+        {
+            "name": "Holy Fries",
+            "ingredients": [
+                "Regular Fries",
+                "SF.Chicken",
+                "Smoked Bacon",
+                "Crispy Shallots",
+                "Chipotle Mayo",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Stunner Fries",
+            "ingredients": [
+                "Regular Fries",
+                "SF.Chicken",
+                "Smoked Bacon",
+                "Honey",
+                "Chipotle Mayo"
+            ]
+        },
+        {
+            "name": "Lucky XL",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Bacon",
+                "Honey-Sriracha Glazed SF.Chicken",
+                "Lettuce",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Legit XL",
+            "ingredients": [
+                "Beef",
+                "Cheese",
+                "Bacon",
+                "SF.Chicken",
+                "Onion Ring",
+                "Chipotle Mayo",
+                "BBQ sauce"
+            ]
+        },
+        {
+            "name": "Texas Toast",
+            "ingredients": [
+                "3 Texas Toasts"
+            ]
+        },
+        {
+            "name": "Nuggs",
+            "ingredients": [
+                "6 Nuggets"
+            ]
+        },
+        {
+            "name": "Original Pack",
+            "ingredients": [
+                "Queen Chick",
+                "Fries",
+                "2 chicken",
+                "Secret Sauce",
+                "420ml Drink"
+            ]
+        },
+        {
+            "name": "SuperNash Pack",
+            "ingredients": [
+                "SuperNash",
+                "Fries",
+                "2 SuperNash Chicken",
+                "Secret Sauce",
+                "420ml Drink"
+            ]
+        },
+        {
+            "name": "Fiery Faves",
+            "ingredients": [
+                "SuperNash Burger",
+                "2 Honey-Sriracha tenders",
+                "Fries",
+                "Spicy/Sriracha Mayo",
+                "Sundae"
+            ]
+        },
+        {
+            "name": "Feast Pack",
+            "ingredients": [
+                "2 Smash Prince",
+                "2 Lil Cheese",
+                "Large fries",
+                "Chipotle Mayo",
+                "Aioli"
+            ]
+        },
+        {
+            "name": "Holy Trinity",
+            "ingredients": [
+                "Holy Smoke",
+                "Sticky Bishop",
+                "Holy Loaded Fries",
+                "2 420ml coke or water"
+            ]
+        },
+        {
+            "name": "Squad Goals",
+            "ingredients": [
+                "2 Famous Castle",
+                "2 Queen Chick",
+                "2 SuperNash",
+                "Large Fries",
+                "Ketchup",
+                "Aioli",
+                "4 420ml coke or water"
+            ]
         }
+    ]
+}
+        `; // Replace this line with your JSON string
 
-        function shuffle (arr)
+        const data = JSON.parse(jsonData);
+        const menus = data.menu;
+
+        let currentAnswer = null;
+        let correctIngredientsText = '';
+
+        function shuffleArray (arr)
         {
             return arr.sort(() => Math.random() - 0.5);
         }
 
-        function getOptions (correctKey)
+        function pickRandomMenus (excludeMenuName, count)
         {
-            const keys = Object.keys(data[mode]).filter(k => k !== correctKey);
-            const options = shuffle(keys).slice(0, 4);
-            options.push(correctKey);
-            return shuffle(options);
+            const filtered = menus.filter(m => m.name !== excludeMenuName);
+            return shuffleArray(filtered).slice(0, count);
         }
 
-        function nextQuestion ()
+        function startQuiz ()
         {
-            document.getElementById("result").textContent = "";
-            const q = allItems[Math.floor(Math.random() * allItems.length)];
-            currentQuestion = q;
+            const questionElem = document.getElementById('question');
+            const optionsElem = document.getElementById('options');
+            const feedbackElem = document.getElementById('feedback');
+            const nextBtn = document.getElementById('next-btn');
 
-            const fullCombo = data[mode][q.key][mode === 'sauce' ? 'sauces' : 'veges'].join(', ') || 'No ingredients';
-            const question = `What ${mode === 'sauce' ? 'sauce combo' : 'vege combo'} does "${q.item}" belong to?`;
-            document.getElementById("question").textContent = question;
+            feedbackElem.textContent = '';
+            nextBtn.style.display = 'none';
+            optionsElem.innerHTML = '';
 
-            const options = getOptions(q.key);
-            const optionsDiv = document.getElementById("options");
-            optionsDiv.innerHTML = "";
+            const correctMenu = menus[Math.floor(Math.random() * menus.length)];
+            currentAnswer = correctMenu.ingredients.join(', ');
+            correctIngredientsText = correctMenu.ingredients.join(', ');
 
-            options.forEach(opt =>
+            questionElem.textContent = `What are the ingredients for "${correctMenu.name}"?`;
+
+            const wrongMenus = pickRandomMenus(correctMenu.name, 4);
+            const allOptions = [...wrongMenus.map(m => m.ingredients.join(', ')), currentAnswer];
+            const shuffledOptions = shuffleArray(allOptions);
+
+            shuffledOptions.forEach(opt =>
             {
-                const btn = document.createElement("button");
-                btn.className = "option";
-                btn.textContent = `${opt} - ${data[mode][opt][mode === 'sauce' ? 'sauces' : 'veges'].join(', ')}`;
-                btn.onclick = () =>
-                {
-                    if (opt === q.key)
-                    {
-                        document.getElementById("result").textContent = "Correct!";
-                    } else
-                    {
-                        document.getElementById("result").textContent = `Wrong. Correct answer is ${q.key} - ${data[mode][q.key][mode === 'sauce' ? 'sauces' : 'veges'].join(', ')}`;
-                    }
-                };
-                optionsDiv.appendChild(btn);
+                const button = document.createElement('button');
+                button.className = 'option';
+                button.textContent = opt;
+                button.dataset.value = opt;
+                button.onclick = () => selectOption(button);
+                optionsElem.appendChild(button);
             });
         }
 
-        function changeMode ()
+        function selectOption (button)
         {
-            mode = document.getElementById("mode-selector").value;
-            buildPool();
-            nextQuestion();
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            button.classList.add('selected');
+
+            const feedbackElem = document.getElementById('feedback');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (button.dataset.value === currentAnswer)
+            {
+                feedbackElem.innerHTML = `✅ Correct!<br><br>Answer: ${correctIngredientsText}`;
+                feedbackElem.style.color = "green";
+            } else
+            {
+                feedbackElem.innerHTML = `❌ Wrong!<br><br>Answer: ${correctIngredientsText}`;
+                feedbackElem.style.color = "red";
+            }
+
+            nextBtn.style.display = 'block';
         }
 
-        buildPool();
-        nextQuestion();
+        document.getElementById('next-btn').addEventListener('click', startQuiz);
+
+        // Start first quiz
+        startQuiz();
     </script>
+
 </body>
 
 </html>

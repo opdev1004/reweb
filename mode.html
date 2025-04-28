@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sauce & Vege Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 4px;
+            background: #f4f4f4;
+            margin: 0;
+        }
+
+        #quiz-container {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            margin-bottom: 1em;
+            font-size: 1.2em;
+        }
+
+        .option {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0.5em 0;
+        }
+
+        button,
+        select {
+            padding: 0.5em 1em;
+            font-size: 1em;
+            margin-top: 1em;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #mode-selector {
+            margin-bottom: 1em;
+        }
+
+        @media (min-width: 600px) {
+            button.option {
+                width: auto;
+            }
+
+            button,
+            select {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="quiz-container">
+        <a href="/reweb/">Home</a> <a href="/reweb/mode">Mode</a>
+        <label for="mode">Choose mode:</label>
+        <select id="mode-selector" onchange="changeMode()">
+            <option value="sauce">Sauce</option>
+            <option value="veges">Veges</option>
+        </select>
+        <h2 id="question">Loading...</h2>
+        <div id="options"></div>
+        <div id="result"></div>
+        <button onclick="nextQuestion()">Next</button>
+    </div>
+
+    <script>
+        const data = JSON.parse(`
+{
+    "sauce": {
+        "R": {
+            "sauces": [
+                "Resauce"
+            ],
+            "items": [
+                "Smash Prince",
+                "Smash Queen",
+                "Famous Castle",
+                "Original George",
+                "Slam LC",
+                "Icon",
+                "Tenderbox LC (o)"
+            ]
+        },
+        "RMK": {
+            "sauces": [
+                "Resauce",
+                "Mustard",
+                "Ketchup"
+            ],
+            "items": [
+                "Cheese Burger Fries"
+            ]
+        },
+        "RB": {
+            "sauces": [
+                "Resauce",
+                "BBQ"
+            ],
+            "items": [
+                "Smoky LC"
+            ]
+        },
+        "RH": {
+            "sauces": [
+                "Resauce",
+                "Honey"
+            ],
+            "items": [
+                "Rehab"
+            ]
+        },
+        "A": {
+            "sauces": [
+                "Aioli"
+            ],
+            "items": [
+                "Queen Chick",
+                "Lil Chick",
+                "Supernash",
+                "Hawaii 5.0",
+                "Crunchy LC",
+                "Supreme LC",
+                "The Backbone",
+                "Lucky XL"
+            ]
+        },
+        "AK": {
+            "sauces": [
+                "Aioli",
+                "Ketchup"
+            ],
+            "items": [
+                "Great King",
+                "Legend"
+            ]
+        },
+        "AKM": {
+            "sauces": [
+                "Aioli",
+                "Ketchup",
+                "Mustard"
+            ],
+            "items": [
+                "Cheese Burger",
+                "Classic"
+            ]
+        },
+        "AB": {
+            "sauces": [
+                "Aioli",
+                "BBQ"
+            ],
+            "items": [
+                "Pitmaster",
+                "King Ed",
+                "Royal Big Smoke",
+                "Imp Smokehouse",
+                "BBQ Bacon Fries"
+            ]
+        },
+        "MAB": {
+            "sauces": [
+                "Mustard",
+                "Aioli",
+                "BBQ"
+            ],
+            "items": [
+                "Dirty Duke",
+                "Final Boss"
+            ]
+        },
+        "CMK": {
+            "sauces": [
+                "Chipotle",
+                "Ketchup"
+            ],
+            "items": [
+                "Easy 2.0",
+                "Mean Bean"
+            ]
+        },
+        "CMB": {
+            "sauces": [
+                "Chipotle",
+                "BBQ"
+            ],
+            "items": [
+                "Sticky Bishop",
+                "Holy Smoke",
+                "Legit XL",
+                "Holy Fries"
+            ]
+        },
+        "SM": {
+            "sauces": [
+                "Sriracha"
+            ],
+            "items": [
+                "Regent Red",
+                "Spicy Fries"
+            ]
+        },
+        "MK": {
+            "sauces": [
+                "Mustard",
+                "Ketchup"
+            ],
+            "items": [
+                "Lil Cheese"
+            ]
+        },
+        "AS": {
+            "sauces": [
+                "Aioli",
+                "Sweet Chilli"
+            ],
+            "items": [
+                "Sweet Chilli Fries"
+            ]
+        },
+        "CH": {
+            "sauces": [
+                "Chipotle",
+                "Honey"
+            ],
+            "items": [
+                "Stunner Fries"
+            ]
+        },
+        "AJ": {
+            "sauces": [
+                "Aioli",
+                "Jam"
+            ],
+            "items": [
+                "Jammy Dodger"
+            ]
+        },
+        "No Sauce": {
+            "sauces": [],
+            "items": [
+                "Renegade"
+            ]
+        },
+        "Secret": {
+            "sauces": [],
+            "items": [
+                "Pack, Box (o)"
+            ]
+        }
+    },
+    "veges": {
+        "TLOP": {
+            "veges": [
+                "Full"
+            ],
+            "items": [
+                "Great King",
+                "Dirty Duke"
+            ]
+        },
+        "LOP": {
+            "veges": [
+                "Lettuce",
+                "Onions",
+                "Pickles"
+            ],
+            "items": [
+                "Smash Prince",
+                "Smash Queen"
+            ]
+        },
+        "TLP": {
+            "veges": [
+                "Tomato",
+                "Lettuce",
+                "Pickles"
+            ],
+            "items": [
+                "Famous Castle"
+            ]
+        },
+        "TLO": {
+            "veges": [
+                "Tomato",
+                "Lettuce",
+                "Onions"
+            ],
+            "items": [
+                "Mean Bean"
+            ]
+        },
+        "OP": {
+            "veges": [
+                "Onions",
+                "Pickles"
+            ],
+            "items": [
+                "Cheese Burger",
+                "Classic",
+                "Cheese Burger Fries"
+            ]
+        },
+        "TL": {
+            "veges": [
+                "Tomato",
+                "Lettuce"
+            ],
+            "items": [
+                "Supreme LC",
+                "Queen Chick",
+                "Original George"
+            ]
+        },
+        "LP": {
+            "veges": [
+                "Lettuce",
+                "Pickles"
+            ],
+            "items": [
+                "Supernash",
+                "Rehab"
+            ]
+        },
+        "L": {
+            "veges": [
+                "Lettuce"
+            ],
+            "items": [
+                "Crunch LC",
+                "Regent Red",
+                "Lucky XL",
+                "Lil Chick"
+            ]
+        },
+        "O": {
+            "veges": [
+                "Onions"
+            ],
+            "items": [
+                "Pitmaster"
+            ]
+        },
+        "P": {
+            "veges": [
+                "Pickles"
+            ],
+            "items": [
+                "Slam LC",
+                "Lil Cheese"
+            ]
+        },
+        "BRL": {
+            "veges": [
+                "Beetroot",
+                "Lettuce"
+            ],
+            "items": [
+                "Legend"
+            ]
+        },
+        "LH": {
+            "veges": [
+                "Lettuce",
+                "Hashbrown"
+            ],
+            "items": [
+                "Easy 2.0"
+            ]
+        },
+        "CS": {
+            "veges": [
+                "Crunchy",
+                "Shllots"
+            ],
+            "items": [
+                "Sweet Chilli Fries",
+                "Holy Fries"
+            ]
+        },
+        "OR": {
+            "veges": [
+                "Onion Ring"
+            ],
+            "items": [
+                "Legit XL",
+                "Imp Smokehouse"
+            ]
+        },
+        "GOOR": {
+            "veges": [
+                "G Oniion",
+                "Onion Ring"
+            ],
+            "items": [
+                "Final Boss"
+            ]
+        },
+        "GO/CO": {
+            "veges": [
+                "G Onion",
+                "C Onion"
+            ],
+            "items": [
+                "Icon",
+                "Sticky Bishop",
+                "Holy Smoke"
+            ]
+        },
+        "POR": {
+            "veges": [
+                "Pickles",
+                "Onion Ring"
+            ],
+            "items": [
+                "Royal Big Smoke"
+            ]
+        },
+        "LFP": {
+            "veges": [
+                "Lettuce",
+                "FPineapple"
+            ],
+            "items": [
+                "Hawaii 5.0"
+            ]
+        },
+        "LGP": {
+            "veges": [
+                "Lettuce",
+                "GPineapple"
+            ],
+            "items": [
+                "King Ed"
+            ]
+        },
+        "No Vege": {
+            "veges": [],
+            "items": [
+                "Jammy Dodger",
+                "The Backbone",
+                "Smoky LC",
+                "Renegade"
+            ]
+        }
+    }
+}
+        `);
+
+        let mode = 'sauce';
+        let currentQuestion = null;
+        let allItems = [];
+
+        function buildPool ()
+        {
+            allItems = [];
+            const pool = data[mode];
+            for (const key in pool)
+            {
+                pool[key].items.forEach(item =>
+                {
+                    allItems.push({ item, key });
+                });
+            }
+        }
+
+        function shuffle (arr)
+        {
+            return arr.sort(() => Math.random() - 0.5);
+        }
+
+        function getOptions (correctKey)
+        {
+            const keys = Object.keys(data[mode]).filter(k => k !== correctKey);
+            const options = shuffle(keys).slice(0, 4);
+            options.push(correctKey);
+            return shuffle(options);
+        }
+
+        function nextQuestion ()
+        {
+            document.getElementById("result").textContent = "";
+            const q = allItems[Math.floor(Math.random() * allItems.length)];
+            currentQuestion = q;
+
+            const fullCombo = data[mode][q.key][mode === 'sauce' ? 'sauces' : 'veges'].join(', ') || 'No ingredients';
+            const question = `What ${mode === 'sauce' ? 'sauce combo' : 'vege combo'} does "${q.item}" belong to?`;
+            document.getElementById("question").textContent = question;
+
+            const options = getOptions(q.key);
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = "";
+
+            options.forEach(opt =>
+            {
+                const btn = document.createElement("button");
+                btn.className = "option";
+                btn.textContent = `${opt} - ${data[mode][opt][mode === 'sauce' ? 'sauces' : 'veges'].join(', ')}`;
+                btn.onclick = () =>
+                {
+                    if (opt === q.key)
+                    {
+                        document.getElementById("result").textContent = "Correct!";
+                    } else
+                    {
+                        document.getElementById("result").textContent = `Wrong. Correct answer is ${q.key} - ${data[mode][q.key][mode === 'sauce' ? 'sauces' : 'veges'].join(', ')}`;
+                    }
+                };
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function changeMode ()
+        {
+            mode = document.getElementById("mode-selector").value;
+            buildPool();
+            nextQuestion();
+        }
+
+        buildPool();
+        nextQuestion();
+    </script>
+</body>
+
+</html>
